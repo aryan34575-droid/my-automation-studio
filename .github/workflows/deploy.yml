@@ -32,10 +32,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Vite application
+      - name: Build application
         run: npm run build
 
-      - name: Setup GitHub Pages
+      - name: Verify build output
+        run: |
+          test -f dist/index.html
+          echo "dist/index.html found"
+
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
@@ -46,6 +51,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
 
     environment:
       name: github-pages
