@@ -1,0 +1,21 @@
+﻿
+Path                                                                    LineNumber L
+                                                                                   i
+                                                                                   n
+                                                                                   e
+----                                                                    ---------- -
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         26  
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                     1 c
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                     2 c
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                     5  
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                    13  
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                    21  
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                    40  
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                     8  
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                    15  
+C:\Users\aryan\my-automation-studio\src\App.jsx                                  6 c
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 17  
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 41  
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 83  
+
+

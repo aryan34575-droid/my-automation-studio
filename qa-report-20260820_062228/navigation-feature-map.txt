@@ -1,0 +1,112 @@
+﻿
+Path                                                                         LineNumber Line                                                                                                                
+----                                                                         ---------- ----                                                                                                                
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx              1 import './AIActionCenter.css';                                                                                      
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx              3 import { askOllama, checkPythonAPI, checkOllama } from "../../services/aiBridge";                                   
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx              5 export default function AIActionCenter() {                                                                          
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             12     setStatus("Checking AI stack...");                                                                              
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             16       const [python, ollama] = await Promise.all([                                                                  
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             18         checkOllama()                                                                                               
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             21       setStatus("AI stack online");                                                                                 
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             26             ollama: ollama                                                                                          
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             38   async function askAI() {                                                                                          
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             45     setStatus("Ollama is thinking...");                                                                             
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             49       const models = await checkOllama();                                                                           
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             53         throw new Error("No Ollama model is available.");                                                           
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             56       const response = await askOllama(prompt, model);                                                              
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             61       setStatus("AI request failed");                                                                               
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             69     <section className="ai-action-center">                                                                          
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             70       <div className="ai-action-header">                                                                            
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             72           <h2>AI Action Center</h2>                                                                                 
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             73           <p>Unified control for Data Analyst and Ollama.</p>                                                       
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             76         <span className="ai-status">{status}</span>                                                                 
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             79       <div className="ai-actions">                                                                                  
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             81           Check AI Stack                                                                                            
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             84         <button onClick={askAI} disabled={loading}>                                                                 
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             85           {loading ? "Thinking..." : "Ask Ollama"}                                                                  
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             92         placeholder="Ask your AI assistant something..."                                                            
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx             97         <pre className="ai-result">                                                                                 
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx              26       const response = await fetch(`${API_URL}/analyze`, {                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx              32         throw new Error(`API request failed: ${response.status}`);                                                  
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx              35       const data = await response.json();                                                                           
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx              38         throw new Error(data.message || "Analysis failed.");                                                        
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx              53           <span className="eyebrow">AI DATA ANALYST</span>                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx              56             Upload CSV or Excel data and get automated analysis with AI insights.                                   
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx             129           <div className="result-card ai-card">                                                                     
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx             130             <div className="ai-title">                                                                              
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx             132               <h3>AI Analyst Insights</h3>                                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx             135             {result.ai?.summary ? (                                                                                 
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx             136               <p>{result.ai.summary}</p>                                                                            
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx             138               <p>AI analysis was not available.</p>                                                                 
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx               3 import "./UnifiedWorkspace.css";                                                                                    
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx               5 export default function UnifiedWorkspace() {                                                                        
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx              17           <h1>Unified AI Workspace</h1>                                                                             
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx              20             Personal Agent + AI Data Analyst + Ollama                                                               
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx              35           📊 Data Analyst                                                                                           
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx              77               the Data Analyst integration is verified.                                                             
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspaceEntry.jsx          2 import UnifiedWorkspace from "./UnifiedWorkspace";                                                                  
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspaceEntry.jsx          4 export default function UnifiedWorkspaceEntry() {                                                                   
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspaceEntry.jsx          7       <UnifiedWorkspace />                                                                                          
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                          2 const OLLAMA_BASE = "http://127.0.0.1:11434";                                                                       
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                          5   const response = await fetch(`${API_BASE}/health`);                                                               
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                          7     throw new Error("Python API health check failed");                                                              
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         12 export async function checkOllama() {                                                                               
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         13   const response = await fetch(`${API_BASE}/health`);                                                               
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         15     throw new Error("Ollama health check failed");                                                                  
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         20 export async function askOllama(prompt, model) {                                                                    
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         21   const response = await fetch(`${OLLAMA_BASE}/api/generate`, {                                                     
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         34     throw new Error(`Ollama request failed: ${response.status}`);                                                   
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js                         40   const response = await fetch(`${API_BASE}/health`);                                                               
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                          1 export async function getAIStackStatus() {                                                                          
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                          4     ollama: "offline"                                                                                               
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                          8     const apiResponse = await fetch("http://127.0.0.1:8001/health");                                                
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                         15     const ollamaResponse = await fetch("http://127.0.0.1:11434/api/tags");                                          
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                         16     result.ollama = ollamaResponse.ok ? "online" : "error";                                                         
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js                         18     result.ollama = "offline";                                                                                      
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                               4 export default function AppShell({                                                                                  
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                               6   active = "home",                                                                                                  
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              11     ["home", "⌂", "Home"],                                                                                          
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              13     ["ai", "✦", "AI"],                                                                                              
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              14     ["reports", "▤", "Reports"],                                                                                    
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              15     ["settings", "⚙", "Settings"]                                                                                   
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              19     ["cleaning", "⌁", "Cleaning"],                                                                                  
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              20     ["charts", "◒", "Charts"],                                                                                      
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              21     ["insights", "✧", "Insights"]                                                                                   
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              41           MAIN                                                                                                      
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              91             (active === "settings"                                                                                  
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              95           onClick={() => go("settings")}                                                                            
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                              98           <span>Settings</span>                                                                                     
+C:\Users\aryan\my-automation-studio\src\App.jsx                                       1 import UnifiedWorkspaceEntry from './components/UnifiedWorkspaceEntry';                                             
+C:\Users\aryan\my-automation-studio\src\App.jsx                                       2 import AIActionCenter from "./components/ai/AIActionCenter";                                                        
+C:\Users\aryan\my-automation-studio\src\App.jsx                                      17       const res = await fetch(`${API}/health`);                                                                     
+C:\Users\aryan\my-automation-studio\src\App.jsx                                      41       const response = await fetch(`${API}/chat`, {                                                                 
+C:\Users\aryan\my-automation-studio\src\App.jsx                                      51       const data = await response.json();                                                                           
+C:\Users\aryan\my-automation-studio\src\App.jsx                                      83       const response = await fetch(`${API}/analyze`, {                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                      88       const data = await response.json();                                                                           
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     103             "Data Analyst API is running, but the analyze endpoint needs to be mapped to the current backend route."
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     113         <p className="subtitle">AI + Data Workspace</p>                                                             
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     126           Data Analyst                                                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     133           Personal AI Agent                                                                                         
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     144       <main className="main">                                                                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     149               {tab === "analyst" && "AI Data Analyst"}                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     150               {tab === "agent" && "Personal AI Agent"}                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     155               Pandas � DuckDB � SQL � Ollama � Automation                                                           
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     174                 One workspace for data analysis, AI reasoning,                                                      
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     184               <h3>Data Analyst</h3>                                                                                 
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     186                 Excel / CSV ? Pandas ? DuckDB / SQL ? insights                                                      
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     196                 Ollama-powered assistant for personal workflows.                                                    
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     204               <h3>AI Engine</h3>                                                                                    
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     206                 Local Ollama models are used as the reasoning layer.                                                
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     218               <h3>Data Analyst Workspace</h3>                                                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     251                 <li>AI insights</li>                                                                                
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     260               <h3>Personal AI Agent</h3>                                                                            
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     266                     explain something, plan a task,                                                                 
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     300                   placeholder="Ask your personal AI agent..."                                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     323               <h3>Ollama</h3>                                                                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     325                 Local AI reasoning engine                                                                           
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     344         <AIActionCenter />                                                                                          
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     345 </main>                                                                                                             
+C:\Users\aryan\my-automation-studio\src\App.jsx                                     349   <UnifiedWorkspaceEntry />                                                                                         
+
+
+

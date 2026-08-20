@@ -1,0 +1,432 @@
+﻿import { useMemo, useState } from "react";
+import * as XLSX from "xlsx";
+import "./App.css";
+
+const API = "http://127.0.0.1:8001";
+
+function App() {
+  const [rows, setRows] = useState([]);
+  const [fileName, setFileName] = useState("");
+  const [analysis, setAnalysis] = useState(null);
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [sql, setSql] = useState("");
+  const [sqlResult, setSqlResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const columns = useMemo(() => {
+    return rows.length ? Object.keys(rows[0]) : [];
+  }, [rows]);
+
+  async function handleFile(event) {
+    const file = event.target.files?.[0];
+
+    if (!file) return;
+
+    setLoading(true);
+    setMessage("Reading dataset...");
+    setAnalysis(null);
+    setAnswer("");
+    setSqlResult(null);
+
+    try {
+      const buffer = await file.arrayBuffer();
+
+      const workbook = XLSX.read(buffer, {
+        type: "array",
+        cellDates: true
+      });
+
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+      const data = XLSX.utils.sheet_to_json(sheet, {
+        defval: null
+      });
+
+      if (!data.length) {
+        throw new Error("The selected file does not contain usable rows.");
+      }
+
+      setRows(data);
+      setFileName(file.name);
+      setMessage(`${data.length} rows loaded successfully.`);
+
+      const response = await fetch(`${API}/analyze`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          rows: data
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.status === "error") {
+        throw new Error(result.message || "Analysis failed.");
+      }
+
+      setAnalysis(result);
+      setMessage("Dataset analyzed successfully.");
+    } catch (error) {
+      setMessage(`Error: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function askAI() {
+    if (!question.trim()) return;
+
+    setLoading(true);
+    setAnswer("");
+
+    try {
+      const response = await fetch(`${API}/ask`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          question,
+          rows
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.status === "error") {
+        throw new Error(result.message || "AI request failed.");
+      }
+
+      setAnswer(result.answer);
+    } catch (error) {
+      setAnswer(`Error: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function runSQL() {
+    if (!sql.trim() || !rows.length) return;
+
+    setLoading(true);
+    setSqlResult(null);
+
+    try {
+      const response = await fetch(`${API}/sql`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          query: sql,
+          rows
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.status === "error") {
+        throw new Error(result.message || "SQL execution failed.");
+      }
+
+      setSqlResult(result);
+    } catch (error) {
+      setSqlResult({
+        status: "error",
+        message: error.message
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function useExample(text) {
+    setQuestion(text);
+  }
+
+  return (
+    <div className="app">
+
+      <header className="topbar">
+        <div>
+          <div className="brand">Automation Studio</div>
+          <div className="subtitle">
+            AI Workspace for Data, Office & Automation
+          </div>
+        </div>
+
+        <div className="status">
+          <span className="status-dot"></span>
+          AI Engine
+        </div>
+      </header>
+
+      <main className="container">
+
+        <section className="hero">
+          <div>
+            <h1>Your AI Work Assistant</h1>
+            <p>
+              Analyze data, run SQL, ask AI questions and build
+              office workflows from one workspace.
+            </p>
+          </div>
+
+          <label className="upload-button">
+            {loading ? "Processing..." : "Upload Excel / CSV"}
+            <input
+              type="file"
+              accept=".csv,.xlsx,.xls"
+              onChange={handleFile}
+              disabled={loading}
+            />
+          </label>
+        </section>
+
+        {message && (
+          <div className="message">
+            {message}
+          </div>
+        )}
+
+        {fileName && (
+          <section className="file-card">
+            <div>
+              <strong>Current Dataset</strong>
+              <span>{fileName}</span>
+            </div>
+
+            <div>
+              <strong>Rows</strong>
+              <span>{rows.length}</span>
+            </div>
+
+            <div>
+              <strong>Columns</strong>
+              <span>{columns.length}</span>
+            </div>
+          </section>
+        )}
+
+        {analysis && (
+          <section className="grid">
+
+            <div className="metric">
+              <span>Rows</span>
+              <strong>{analysis.rows}</strong>
+            </div>
+
+            <div className="metric">
+              <span>Columns</span>
+              <strong>{analysis.columns}</strong>
+            </div>
+
+            <div className="metric">
+              <span>Missing Values</span>
+              <strong>{analysis.missing_values}</strong>
+            </div>
+
+            <div className="metric">
+              <span>Duplicates</span>
+              <strong>{analysis.duplicates}</strong>
+            </div>
+
+          </section>
+        )}
+
+        <section className="workspace">
+
+          <div className="panel">
+
+            <div className="panel-title">
+              <div>
+                <h2>AI Data Analyst</h2>
+                <p>Ask questions about your dataset.</p>
+              </div>
+            </div>
+
+            <div className="examples">
+              <button onClick={() => useExample("Give me a summary of this dataset.")}>
+                Dataset Summary
+              </button>
+
+              <button onClick={() => useExample("Find important trends in this data.")}>
+                Find Trends
+              </button>
+
+              <button onClick={() => useExample("Identify data quality problems.")}>
+                Data Quality
+              </button>
+
+              <button onClick={() => useExample("Suggest useful KPIs for this dataset.")}>
+                Suggest KPIs
+              </button>
+            </div>
+
+            <textarea
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="Ask something like: Which product has the highest sales?"
+            />
+
+            <button
+              className="primary"
+              onClick={askAI}
+              disabled={loading || !rows.length}
+            >
+              {loading ? "Thinking..." : "Ask AI Analyst"}
+            </button>
+
+            {answer && (
+              <div className="answer">
+                <h3>AI Analyst</h3>
+                <p>{answer}</p>
+              </div>
+            )}
+
+          </div>
+
+          <div className="panel">
+
+            <div className="panel-title">
+              <div>
+                <h2>SQL Workspace</h2>
+                <p>Run SQL directly against your uploaded dataset.</p>
+              </div>
+            </div>
+
+            <textarea
+              className="sql"
+              value={sql}
+              onChange={(e) => setSql(e.target.value)}
+              placeholder={
+                "SELECT * FROM dataset LIMIT 10"
+              }
+            />
+
+            <button
+              className="primary"
+              onClick={runSQL}
+              disabled={loading || !rows.length}
+            >
+              Run SQL
+            </button>
+
+            {sqlResult?.status === "success" && (
+              <div className="table-wrapper">
+
+                <table>
+                  <thead>
+                    <tr>
+                      {sqlResult.columns.map((column) => (
+                        <th key={column}>{column}</th>
+                      ))}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {sqlResult.rows.map((row, index) => (
+                      <tr key={index}>
+                        {sqlResult.columns.map((column) => (
+                          <td key={column}>
+                            {String(row[column] ?? "")}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+              </div>
+            )}
+
+            {sqlResult?.status === "error" && (
+              <div className="error">
+                {sqlResult.message}
+              </div>
+            )}
+
+          </div>
+
+        </section>
+
+        {analysis && (
+          <section className="panel profile">
+
+            <div className="panel-title">
+              <div>
+                <h2>Dataset Profile</h2>
+                <p>Automatic column-level data quality analysis.</p>
+              </div>
+            </div>
+
+            <div className="table-wrapper">
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Missing</th>
+                    <th>Unique</th>
+                    <th>Numeric</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {analysis.profile.map((item) => (
+                    <tr key={item.column}>
+                      <td>{item.column}</td>
+                      <td>{item.dtype}</td>
+                      <td>{item.missing}</td>
+                      <td>{item.unique}</td>
+                      <td>{item.numeric ? "Yes" : "No"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+            </div>
+
+          </section>
+        )}
+
+        <section className="modules">
+
+          <div className="module-card active">
+            <span>01</span>
+            <h3>Data Analyst</h3>
+            <p>Python, Pandas, SQL and AI analysis.</p>
+          </div>
+
+          <div className="module-card">
+            <span>02</span>
+            <h3>Office Copilot</h3>
+            <p>Excel, PowerPoint, Word and reports.</p>
+          </div>
+
+          <div className="module-card">
+            <span>03</span>
+            <h3>Personal Agent</h3>
+            <p>Tasks, files, workflows and automation.</p>
+          </div>
+
+          <div className="module-card">
+            <span>04</span>
+            <h3>Automation</h3>
+            <p>Connect tools and execute workflows.</p>
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+  );
+}
+
+export default App;

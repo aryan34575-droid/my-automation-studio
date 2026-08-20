@@ -1,0 +1,1065 @@
+﻿/* ==========================================================
+   AUTOMATION STUDIO
+   MODERN AI DATA ANALYST DESIGN SYSTEM
+   UI ONLY
+   Backend / API / Python / Ollama untouched
+   ========================================================== */
+
+:root {
+
+  /* ---------- BRAND ---------- */
+
+  --brand: #7c3aed;
+  --brand-2: #a855f7;
+  --brand-soft: rgba(124,58,237,.11);
+
+  --cyan: #0891b2;
+  --cyan-soft: rgba(8,145,178,.11);
+
+  --green: #059669;
+  --green-soft: rgba(5,150,105,.11);
+
+  --orange: #ea580c;
+  --orange-soft: rgba(234,88,12,.11);
+
+  --pink: #db2777;
+  --pink-soft: rgba(219,39,119,.11);
+
+  --red: #dc2626;
+  --red-soft: rgba(220,38,38,.10);
+
+  /* ---------- LIGHT ---------- */
+
+  --background: #f6f7fb;
+
+  --surface: #ffffff;
+
+  --surface-2: #fafbff;
+
+  --surface-3: #f2f4f8;
+
+  --text: #101828;
+
+  --text-secondary: #344054;
+
+  --muted: #667085;
+
+  --border: #e4e7ec;
+
+  /* ---------- EFFECTS ---------- */
+
+  --shadow-xs:
+    0 2px 8px rgba(16,24,40,.04);
+
+  --shadow-sm:
+    0 6px 20px rgba(16,24,40,.06);
+
+  --shadow-md:
+    0 14px 35px rgba(16,24,40,.09);
+
+  --shadow-lg:
+    0 24px 60px rgba(16,24,40,.12);
+
+  --radius-sm: 10px;
+
+  --radius-md: 14px;
+
+  --radius-lg: 18px;
+
+  --radius-xl: 24px;
+
+  --transition:
+    180ms cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* ==========================================================
+   GLOBAL
+   ========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+
+  margin: 0;
+
+  min-width: 320px;
+
+  min-height: 100vh;
+
+  color: var(--text);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:
+
+    radial-gradient(
+      circle at 5% 0%,
+      rgba(124,58,237,.10),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 95% 5%,
+      rgba(8,145,178,.08),
+      transparent 25%
+    ),
+
+    var(--background);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ==========================================================
+   APP CONTAINER
+   ========================================================== */
+
+#root {
+
+  min-height: 100vh;
+
+  width: 100%;
+}
+
+
+main,
+.app,
+.dashboard,
+.workspace,
+.container {
+
+  width: 100%;
+
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 30px;
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+header,
+.page-header,
+.workspace-header,
+.hero {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding: 26px 28px;
+
+  margin-bottom: 24px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(124,58,237,.09),
+      rgba(8,145,178,.05),
+      rgba(219,39,119,.04)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: blur(14px);
+}
+
+
+header::before,
+.page-header::before,
+.workspace-header::before,
+.hero::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 14px;
+
+  bottom: 14px;
+
+  width: 4px;
+
+  border-radius: 99px;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      var(--brand),
+      var(--pink),
+      var(--cyan)
+    );
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY
+   ========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+
+  color: var(--text);
+
+  letter-spacing: -.025em;
+}
+
+h1 {
+
+  font-size:
+    clamp(28px,4vw,44px);
+
+  line-height: 1.08;
+
+  margin: 0 0 8px;
+}
+
+h2 {
+
+  font-size: 26px;
+
+  margin-bottom: 10px;
+}
+
+h3 {
+
+  font-size: 19px;
+}
+
+p {
+
+  color: var(--muted);
+
+  line-height: 1.6;
+}
+
+
+/* ==========================================================
+   CARD SYSTEM
+   ========================================================== */
+
+.card,
+.panel,
+.widget,
+.analysis-card,
+.upload-card,
+.result-card,
+.stat-card,
+.summary-card,
+.insight-card,
+section {
+
+  position: relative;
+
+  background: var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    var(--radius-lg);
+
+  box-shadow:
+    var(--shadow-xs);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+
+.card:hover,
+.panel:hover,
+.widget:hover,
+.analysis-card:hover,
+.upload-card:hover,
+.result-card:hover,
+.stat-card:hover,
+.summary-card:hover,
+.insight-card:hover {
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(124,58,237,.22);
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+
+.card,
+.panel,
+.widget,
+.analysis-card,
+.upload-card,
+.result-card,
+.stat-card,
+.summary-card,
+.insight-card {
+
+  padding: 22px;
+}
+
+
+/* ==========================================================
+   STRUCTURED GRID
+   ========================================================== */
+
+.grid,
+.dashboard-grid,
+.stats-grid,
+.cards-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(220px,1fr)
+    );
+
+  gap: 18px;
+
+  margin:
+    18px 0;
+}
+
+
+/* ==========================================================
+   KPI / METRIC CARDS
+   ========================================================== */
+
+.stat-card {
+
+  overflow: hidden;
+
+  min-height: 135px;
+}
+
+
+.stat-card::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 110px;
+
+  height: 110px;
+
+  right: -40px;
+
+  top: -40px;
+
+  border-radius: 50%;
+
+  background:
+    var(--brand-soft);
+}
+
+
+.stat-card:nth-child(2)::after {
+
+  background:
+    var(--cyan-soft);
+}
+
+
+.stat-card:nth-child(3)::after {
+
+  background:
+    var(--green-soft);
+}
+
+
+.stat-card:nth-child(4)::after {
+
+  background:
+    var(--orange-soft);
+}
+
+
+.stat-card strong,
+.stat-card .value {
+
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 30px;
+
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  color: var(--text);
+}
+
+
+/* ==========================================================
+   TWO COLUMN ANALYTICS
+   ========================================================== */
+
+.two-column,
+.content-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0,1.45fr)
+    minmax(280px,.75fr);
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+
+/* ==========================================================
+   ANALYSIS AREAS
+   ========================================================== */
+
+.analysis,
+.insights,
+.results,
+.summary,
+.numeric-summary {
+
+  display: grid;
+
+  gap: 18px;
+}
+
+
+/* ==========================================================
+   UPLOAD / DATASET AREA
+   ========================================================== */
+
+.upload-card {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--surface),
+      rgba(124,58,237,.035)
+    );
+}
+
+
+input[type="file"] {
+
+  width: 100%;
+
+  min-height: 64px;
+
+  padding: 16px;
+
+  border:
+    1.5px dashed
+    rgba(124,58,237,.35);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--brand-soft),
+      var(--surface-2)
+    );
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition:
+    var(--transition);
+}
+
+
+input[type="file"]:hover {
+
+  border-color:
+    var(--brand);
+
+  background:
+    var(--brand-soft);
+}
+
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+
+button {
+
+  min-height: 42px;
+
+  padding:
+    10px 17px;
+
+  border: 0;
+
+  border-radius:
+    var(--radius-sm);
+
+  color: #ffffff;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--brand),
+      var(--brand-2)
+    );
+
+  font-weight: 700;
+
+  box-shadow:
+    0 7px 18px
+    rgba(124,58,237,.20);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition);
+}
+
+
+button:hover {
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 10px 26px
+    rgba(124,58,237,.28);
+}
+
+
+button:active {
+
+  transform:
+    translateY(0);
+}
+
+
+button:disabled {
+
+  opacity: .55;
+
+  cursor:
+    not-allowed;
+}
+
+
+button.secondary,
+.secondary-button {
+
+  color:
+    var(--text);
+
+  background:
+    var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  box-shadow:
+    var(--shadow-xs);
+}
+
+
+/* ==========================================================
+   STATUS BADGES
+   ========================================================== */
+
+.status,
+.badge,
+.chip {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap: 7px;
+
+  padding:
+    7px 11px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--brand-soft);
+
+  color:
+    var(--brand);
+
+  font-size:
+    12px;
+
+  font-weight:
+    750;
+}
+
+
+.online,
+.ready,
+.success {
+
+  color:
+    var(--green);
+
+  background:
+    var(--green-soft);
+}
+
+
+.warning {
+
+  color:
+    var(--orange);
+
+  background:
+    var(--orange-soft);
+}
+
+
+.error,
+.offline {
+
+  color:
+    var(--red);
+
+  background:
+    var(--red-soft);
+}
+
+
+/* ==========================================================
+   TABLE / DATA PREVIEW
+   ========================================================== */
+
+table {
+
+  width: 100%;
+
+  border-collapse:
+    separate;
+
+  border-spacing:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    var(--radius-md);
+}
+
+
+th,
+td {
+
+  padding:
+    14px 16px;
+
+  text-align:
+    left;
+
+  border-bottom:
+    1px solid
+    var(--border);
+}
+
+
+th {
+
+  color:
+    var(--text);
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--surface-2),
+      var(--brand-soft)
+    );
+
+  font-weight:
+    750;
+}
+
+
+td {
+
+  color:
+    var(--muted);
+}
+
+
+tr:last-child td {
+
+  border-bottom:
+    0;
+}
+
+
+/* ==========================================================
+   FORMS
+   ========================================================== */
+
+input,
+select,
+textarea {
+
+  width: 100%;
+
+  padding:
+    11px 13px;
+
+  color:
+    var(--text);
+
+  background:
+    var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    var(--radius-sm);
+
+  outline:
+    none;
+
+  transition:
+    var(--transition);
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+  border-color:
+    var(--brand);
+
+  box-shadow:
+    0 0 0 3px
+    var(--brand-soft);
+}
+
+
+/* ==========================================================
+   INSIGHT CARDS
+   ========================================================== */
+
+.insight-card {
+
+  overflow:
+    hidden;
+}
+
+
+.insight-card::before {
+
+  content: "";
+
+  position:
+    absolute;
+
+  left: 0;
+
+  top: 0;
+
+  bottom: 0;
+
+  width: 4px;
+
+  background:
+    var(--brand);
+}
+
+
+.insight-card:nth-child(2)::before {
+
+  background:
+    var(--cyan);
+}
+
+
+.insight-card:nth-child(3)::before {
+
+  background:
+    var(--green);
+}
+
+
+.insight-card:nth-child(4)::before {
+
+  background:
+    var(--orange);
+}
+
+
+/* ==========================================================
+   SIDEBAR
+   ========================================================== */
+
+aside,
+.sidebar {
+
+  background:
+    var(--surface);
+
+  border-color:
+    var(--border);
+}
+
+
+/* ==========================================================
+   DARK MODE
+   FOLLOWS OPERATING SYSTEM
+   ========================================================== */
+
+@media (prefers-color-scheme: dark) {
+
+  :root {
+
+    --background:
+      #101218;
+
+    --surface:
+      #181b23;
+
+    --surface-2:
+      #20242e;
+
+    --surface-3:
+      #252a34;
+
+    --text:
+      #f5f7fa;
+
+    --text-secondary:
+      #d0d5dd;
+
+    --muted:
+      #98a2b3;
+
+    --border:
+      #2d3340;
+
+    --brand:
+      #a78bfa;
+
+    --brand-2:
+      #c084fc;
+
+    --cyan:
+      #22d3ee;
+
+    --green:
+      #34d399;
+
+    --orange:
+      #fb923c;
+
+    --pink:
+      #f472b6;
+  }
+
+  body {
+
+    background:
+
+      radial-gradient(
+        circle at 5% 0%,
+        rgba(167,139,250,.14),
+        transparent 28%
+      ),
+
+      radial-gradient(
+        circle at 95% 5%,
+        rgba(34,211,238,.08),
+        transparent 25%
+      ),
+
+      var(--background);
+  }
+
+  input[type="file"] {
+
+    background:
+
+      linear-gradient(
+        135deg,
+        rgba(167,139,250,.08),
+        var(--surface-2)
+      );
+  }
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width:1000px) {
+
+  .two-column,
+  .content-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  header,
+  .page-header,
+  .workspace-header,
+  .hero {
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+}
+
+
+@media (max-width:650px) {
+
+  main,
+  .app,
+  .dashboard,
+  .workspace,
+  .container {
+
+    padding:
+      14px;
+  }
+
+  .grid,
+  .dashboard-grid,
+  .stats-grid,
+  .cards-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  header,
+  .page-header,
+  .workspace-header,
+  .hero {
+
+    padding:
+      20px;
+  }
+
+  .card,
+  .panel,
+  .widget,
+  .analysis-card,
+  .upload-card,
+  .result-card,
+  .stat-card,
+  .summary-card,
+  .insight-card {
+
+    padding:
+      17px;
+  }
+}
+
+
+/* ==========================================================
+   ACCESSIBLE / CLEAN SCROLLBAR
+   ========================================================== */
+
+* {
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    rgba(124,58,237,.45)
+    transparent;
+}
+
+
+/* ==========================================================
+   SUBTLE MOTION
+   ========================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .card,
+  .panel,
+  .widget,
+  .stat-card,
+  .analysis-card,
+  .insight-card,
+  button {
+
+    will-change:
+      transform;
+  }
+}
+

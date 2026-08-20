@@ -1,0 +1,173 @@
+﻿.data-analyst-panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px;
+  border: 1px solid #26334a;
+  border-radius: 18px;
+  background: #0d1424;
+  color: #ffffff;
+}
+
+.analyst-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #64d8ff;
+}
+
+.analyst-header h2 {
+  margin: 8px 0;
+  font-size: 28px;
+}
+
+.analyst-header p {
+  margin: 0;
+  color: #9ba9bd;
+}
+
+.status-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #123b2d;
+  color: #72e6ad;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.upload-box {
+  padding: 22px;
+  border: 1px dashed #40516b;
+  border-radius: 14px;
+  background: #111a2c;
+}
+
+.upload-box input {
+  display: block;
+  margin-bottom: 16px;
+  color: #cbd5e1;
+}
+
+.upload-box button {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #2f8cff;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.upload-box button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.selected-file {
+  margin-top: 14px;
+  color: #9ba9bd;
+}
+
+.error-box {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #3a171b;
+  color: #ff9ca5;
+}
+
+.analysis-results {
+  margin-top: 24px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.metric-card,
+.result-card {
+  padding: 18px;
+  border-radius: 14px;
+  background: #111a2c;
+  border: 1px solid #26334a;
+}
+
+.metric-card span {
+  display: block;
+  color: #9ba9bd;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.metric-card strong {
+  font-size: 26px;
+}
+
+.result-card {
+  margin-bottom: 18px;
+}
+
+.result-card h3 {
+  margin-top: 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #26334a;
+}
+
+.summary-row span {
+  color: #b7c2d3;
+  text-align: right;
+}
+
+.ai-card {
+  border-color: #345b88;
+}
+
+.ai-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-title h3 {
+  margin: 0;
+}
+
+.ai-card p {
+  color: #d6deea;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 800px) {
+  .analyst-header {
+    flex-direction: column;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-row {
+    flex-direction: column;
+  }
+
+  .summary-row span {
+    text-align: left;
+  }
+}

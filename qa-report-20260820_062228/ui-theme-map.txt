@@ -1,0 +1,107 @@
+﻿
+Path                                                                     LineNumber Line                                                               
+----                                                                     ---------- ----                                                               
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx         11   async function runSystemCheck() {                                
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx         80         <button onClick={runSystemCheck}>                          
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          25           <span>●</span> Systems Online                            
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                          2   Automation Studio UI Design System                               
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         35 /* Explicit Light theme */                                         
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         36 html[data-theme="light"] {                                         
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         37   color-scheme: light;                                             
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         40 /* Explicit Dark theme */                                          
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         41 html[data-theme="dark"] {                                          
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         58   color-scheme: dark;                                              
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         61 /* Default = LIGHT */                                              
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         62 html:not([data-theme]) {                                           
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         63   color-scheme: light;                                             
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         80 /* Desktop sidebar */                                              
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                         82 .as-ui-sidebar {                                                   
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                        267 .as-ui-bottom-nav {                                                
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                        276   .as-ui-sidebar {                                                 
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                        295   .as-ui-bottom-nav {                                              
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                        321   .as-ui-bottom-nav button {                                       
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css                        340   .as-ui-bottom-nav button.active {                                
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                           4 export default function AppShell({                                 
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                          34       <aside className="as-ui-sidebar">                            
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                          85           SYSTEM                                                   
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         115               data-automation-theme="light"                        
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         118               ☀ Light                                              
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         122               data-automation-theme="dark"                         
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         125               ☾ Dark                                               
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         129               data-automation-theme="system"                       
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         132               ◐ System                                             
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                         144       <nav className="as-ui-bottom-nav">                           
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                    5   function systemMode() {                                          
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                    8       "(prefers-color-scheme: dark)"                               
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   10       ? "dark"                                                     
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   11       : "light";                                                   
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   17       mode === "system"                                            
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   18         ? systemMode()                                             
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   22       .setAttribute("data-theme", actual);                         
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   25       .setAttribute("data-theme-mode", mode);                      
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   45       localStorage.getItem(KEY) || "light";                        
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   85         "(prefers-color-scheme: dark)"                             
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   93             === "system"                                           
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js                   95             apply("system");                                       
+C:\Users\aryan\my-automation-studio\src\App.css                                  42     system-ui,                                                     
+C:\Users\aryan\my-automation-studio\src\App.css                                  43     -apple-system,                                                 
+C:\Users\aryan\my-automation-studio\src\App.css                                  44     BlinkMacSystemFont,                                            
+C:\Users\aryan\my-automation-studio\src\App.css                                  86 .sidebar {                                                         
+C:\Users\aryan\my-automation-studio\src\App.css                                 100 .sidebar a {                                                       
+C:\Users\aryan\my-automation-studio\src\App.css                                 122 .sidebar a:hover {                                                 
+C:\Users\aryan\my-automation-studio\src\App.css                                 409 /* Dark mode */                                                    
+C:\Users\aryan\my-automation-studio\src\App.css                                 411 @media (prefers-color-scheme: dark) {                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 111       <aside className="sidebar">                                  
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 137           className={tab === "system" ? "active" : ""}             
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 138           onClick={() => setTab("system")}                         
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 140           System                                                   
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 151               {tab === "system" && "System Status"}                
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 208               <button onClick={() => setTab("system")}>            
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 209                 Check System                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 311         {tab === "system" && (                                     
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     13 html[data-theme="light"] {                                         
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     14   color-scheme: light;                                             
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     17 html[data-theme="dark"] {                                          
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     27   color-scheme: dark;                                              
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     45 html[data-theme="light"] body {                                    
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     49 html[data-theme="dark"] body {                                     
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     72 /* Light mode should always remain clean */                        
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     73 html[data-theme="light"] [class*="card"],                          
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     74 html[data-theme="light"] [class*="Card"],                          
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     75 html[data-theme="light"] [class*="panel"],                         
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     76 html[data-theme="light"] [class*="Panel"] {                        
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     83 /* Dark mode */                                                    
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     84 html[data-theme="dark"] [class*="card"],                           
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     85 html[data-theme="dark"] [class*="Card"],                           
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     86 html[data-theme="dark"] [class*="panel"],                          
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                     87 html[data-theme="dark"] [class*="Panel"] {                         
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    100 html[data-theme="light"] input,                                    
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    101 html[data-theme="light"] textarea,                                 
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    102 html[data-theme="light"] select {                                  
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    107 html[data-theme="dark"] input,                                     
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    108 html[data-theme="dark"] textarea,                                  
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    109 html[data-theme="dark"] select {                                   
+C:\Users\aryan\my-automation-studio\src\automation-theme.css                    138   font: 600 12px/1 system-ui, sans-serif;                          
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                       4   function systemTheme() {                                         
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                       6       window.matchMedia("(prefers-color-scheme: dark)").matches    
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                       7       ? "dark"                                                     
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                       8       : "light";                                                   
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      12     const actual = mode === "system" ? systemTheme() : mode;       
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      14     document.documentElement.setAttribute("data-theme", actual);   
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      15     document.documentElement.setAttribute("data-theme-mode", mode);
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      37       ["light", "☀ Light"],                                        
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      38       ["dark", "☾ Dark"],                                          
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      39       ["system", "◐ System"]                                       
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      57     const saved = localStorage.getItem(KEY) || "light";            
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      61   // IMPORTANT: default is LIGHT.                                  
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      62   applyTheme(localStorage.getItem(KEY) || "light");                
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      71     window.matchMedia("(prefers-color-scheme: dark)")              
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      73         if (localStorage.getItem(KEY) === "system") {              
+C:\Users\aryan\my-automation-studio\src\automation-theme.js                      74           applyTheme("system");                                    
+C:\Users\aryan\my-automation-studio\src\index.css                                14   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;               
+C:\Users\aryan\my-automation-studio\src\index.css                                15   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;            
+C:\Users\aryan\my-automation-studio\src\index.css                                20   color-scheme: light dark;                                        
+C:\Users\aryan\my-automation-studio\src\index.css                                33 @media (prefers-color-scheme: dark) {                              
+
+
+

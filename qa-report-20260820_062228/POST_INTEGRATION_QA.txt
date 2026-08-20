@@ -1,0 +1,24 @@
+﻿AUTOMATION STUDIO
+POST-INTEGRATION QA
+
+Build: PASS
+Navigation map: CREATED
+Data analysis map: CREATED
+AI/API map: CREATED
+UI/theme map: CREATED
+Dependency check: PASS
+
+NEXT MANUAL TEST:
+1. Open the running application.
+2. Click every navigation item.
+3. Upload test_data.csv.
+4. Run analysis.
+5. Check cleaning/statistics/charts/insights.
+6. Test AI/Ollama.
+7. Test Reports.
+8. Test Settings.
+9. Test Light/Dark/System.
+10. Test mobile layout.
+
+If all manual tests pass:
+NEXT MILESTONE = REPORTS + EXPORT + PRODUCTION POLISH.

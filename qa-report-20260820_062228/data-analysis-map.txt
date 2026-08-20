@@ -1,0 +1,65 @@
+﻿
+Path                                                                     LineNumber Line                                                                                                                
+----                                                                     ---------- ----                                                                                                                
+C:\Users\aryan\my-automation-studio\src\components\ai\AIActionCenter.jsx         73           <p>Unified control for Data Analyst and Ollama.</p>                                                       
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx           2 import "./DataAnalystPanel.css";                                                                                    
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx           6 export default function DataAnalystPanel() {                                                                        
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          12   async function analyzeFile() {                                                                                    
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          14       setError("Please select a CSV or Excel file first.");                                                         
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          26       const response = await fetch(`${API_URL}/analyze`, {                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          38         throw new Error(data.message || "Analysis failed.");                                                        
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          50     <section className="data-analyst-panel">                                                                        
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          51       <div className="analyst-header">                                                                              
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          53           <span className="eyebrow">AI DATA ANALYST</span>                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          54           <h2>Analyze your dataset</h2>                                                                             
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          56             Upload CSV or Excel data and get automated analysis with AI insights.                                   
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          65       <div className="upload-box">                                                                                  
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          68           accept=".csv,.xlsx,.xls"                                                                                  
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          76         <button onClick={analyzeFile} disabled={loading}>                                                           
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          77           {loading ? "Analyzing..." : "Analyze Dataset"}                                                            
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          94         <div className="analysis-results">                                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx          99               <strong>{result.analysis.rows}</strong>                                                               
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         104               <strong>{result.analysis.columns}</strong>                                                            
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         108               <span>Missing Values</span>                                                                           
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         109               <strong>{result.analysis.missing_values}</strong>                                                     
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         114             <h3>Numeric Summary</h3>                                                                                
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         116             {Object.entries(result.analysis.numeric_summary).map(                                                   
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         132               <h3>AI Analyst Insights</h3>                                                                          
+C:\Users\aryan\my-automation-studio\src\components\DataAnalystPanel.jsx         138               <p>AI analysis was not available.</p>                                                                 
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx           2 import DataAnalystPanel from "./DataAnalystPanel";                                                                  
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx           6   const [activeModule, setActiveModule] = useState("analyst");                                                      
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          20             Personal Agent + AI Data Analyst + Ollama                                                               
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          32           className={activeModule === "analyst" ? "active" : ""}                                                    
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          33           onClick={() => setActiveModule("analyst")}                                                                
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          35           📊 Data Analyst                                                                                           
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          56         {activeModule === "analyst" && (                                                                            
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          57           <DataAnalystPanel />                                                                                      
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx          77               the Data Analyst integration is verified.                                                             
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                          12     ["analyst", "▦", "Analyst"],                                                                                    
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx                          63           ANALYSIS                                                                                                  
+C:\Users\aryan\my-automation-studio\src\App.jsx                                  76   async function analyzeFile() {                                                                                    
+C:\Users\aryan\my-automation-studio\src\App.jsx                                  83       const response = await fetch(`${API}/analyze`, {                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 103             "Data Analyst API is running, but the analyze endpoint needs to be mapped to the current backend route."
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 123           className={tab === "analyst" ? "active" : ""}                                                             
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 124           onClick={() => setTab("analyst")}                                                                         
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 126           Data Analyst                                                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 149               {tab === "analyst" && "AI Data Analyst"}                                                              
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 174                 One workspace for data analysis, AI reasoning,                                                      
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 184               <h3>Data Analyst</h3>                                                                                 
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 186                 Excel / CSV ? Pandas ? DuckDB / SQL ? insights                                                      
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 188               <button onClick={() => setTab("analyst")}>                                                            
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 189                 Open Analyst                                                                                        
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 215         {tab === "analyst" && (                                                                                     
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 218               <h3>Data Analyst Workspace</h3>                                                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 221                 Upload a CSV or Excel file and send it to the                                                       
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 222                 Python analysis engine.                                                                             
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 227                 accept=".csv,.xlsx,.xls"                                                                            
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 237               <button onClick={analyzeFile}>                                                                        
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 238                 Analyze Dataset                                                                                     
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 243               <h3>Analysis Stack</h3>                                                                               
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 250                 <li>Excel</li>                                                                                      
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 265                     Ask the agent to analyze data,                                                                  
+C:\Users\aryan\my-automation-studio\src\App.jsx                                 332                 DuckDB + SQL analysis layer                                                                         
+
+
+

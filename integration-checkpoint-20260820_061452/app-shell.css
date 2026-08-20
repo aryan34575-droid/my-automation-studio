@@ -1,0 +1,346 @@
+﻿/*
+  Automation Studio UI Design System
+
+  IMPORTANT:
+  This file contains presentation styles only.
+  It does not modify API/Python/Ollama logic.
+*/
+
+:root {
+
+  --ui-bg: #f7f8fc;
+  --ui-surface: #ffffff;
+  --ui-surface-soft: #f4f5f9;
+
+  --ui-text: #172033;
+  --ui-muted: #667085;
+
+  --ui-border: #e4e7ec;
+
+  --ui-primary: #6d5dfc;
+  --ui-primary-soft: rgba(109,93,252,.10);
+
+  --ui-cyan: #06b6d4;
+  --ui-green: #10b981;
+  --ui-orange: #f97316;
+  --ui-pink: #ec4899;
+
+  --ui-radius: 16px;
+  --ui-radius-lg: 22px;
+
+  --ui-shadow:
+    0 8px 30px rgba(15,23,42,.07);
+}
+
+/* Explicit Light theme */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Explicit Dark theme */
+html[data-theme="dark"] {
+
+  --ui-bg: #111827;
+  --ui-surface: #1f2937;
+  --ui-surface-soft: #273449;
+
+  --ui-text: #f3f4f6;
+  --ui-muted: #aab4c3;
+
+  --ui-border: #374151;
+
+  --ui-primary: #9b8cff;
+  --ui-primary-soft: rgba(155,140,255,.14);
+
+  --ui-shadow:
+    0 10px 35px rgba(0,0,0,.28);
+
+  color-scheme: dark;
+}
+
+/* Default = LIGHT */
+html:not([data-theme]) {
+  color-scheme: light;
+}
+
+/* Main shell */
+
+.as-ui-shell {
+  width: 100%;
+  min-height: 100vh;
+
+  background: var(--ui-bg);
+  color: var(--ui-text);
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+}
+
+/* Desktop sidebar */
+
+.as-ui-sidebar {
+
+  position: fixed;
+
+  left: 18px;
+  top: 18px;
+  bottom: 18px;
+
+  width: 230px;
+
+  padding: 18px;
+
+  background: var(--ui-surface);
+
+  border: 1px solid var(--ui-border);
+
+  border-radius: var(--ui-radius-lg);
+
+  box-shadow: var(--ui-shadow);
+
+  z-index: 9000;
+}
+
+.as-ui-brand {
+
+  font-size: 18px;
+  font-weight: 800;
+
+  margin-bottom: 24px;
+}
+
+.as-ui-nav-title {
+
+  margin: 18px 8px 8px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .08em;
+
+  color: var(--ui-muted);
+}
+
+.as-ui-nav-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  width: 100%;
+
+  padding: 11px 12px;
+
+  margin: 4px 0;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  background: transparent;
+
+  color: var(--ui-muted);
+
+  box-shadow: none;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-weight: 650;
+}
+
+.as-ui-nav-item:hover {
+
+  background: var(--ui-primary-soft);
+
+  color: var(--ui-primary);
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+.as-ui-nav-item.active {
+
+  background: var(--ui-primary-soft);
+
+  color: var(--ui-primary);
+}
+
+/* Main workspace spacing */
+
+.as-ui-content {
+
+  margin-left: 266px;
+
+  padding: 24px;
+
+  min-height: 100vh;
+}
+
+/* Top application bar */
+
+.as-ui-topbar {
+
+  position: sticky;
+
+  top: 14px;
+
+  z-index: 8000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+
+  padding: 12px 16px;
+
+  background: color-mix(
+    in srgb,
+    var(--ui-surface) 94%,
+    transparent
+  );
+
+  border: 1px solid var(--ui-border);
+
+  border-radius: 16px;
+
+  box-shadow: var(--ui-shadow);
+
+  backdrop-filter: blur(14px);
+}
+
+/* Theme switcher */
+
+.as-ui-theme {
+
+  display: flex;
+
+  gap: 4px;
+
+  padding: 4px;
+
+  background: var(--ui-surface-soft);
+
+  border: 1px solid var(--ui-border);
+
+  border-radius: 12px;
+}
+
+.as-ui-theme button {
+
+  min-height: 32px;
+
+  padding: 7px 10px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: var(--ui-muted);
+
+  box-shadow: none;
+
+  font-size: 11px;
+}
+
+.as-ui-theme button.active {
+
+  background: var(--ui-primary);
+
+  color: #fff;
+}
+
+/* Mobile bottom navigation */
+
+.as-ui-bottom-nav {
+
+  display: none;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .as-ui-sidebar {
+    display: none;
+  }
+
+  .as-ui-content {
+
+    margin-left: 0;
+
+    padding:
+      14px 14px 92px;
+  }
+
+  .as-ui-topbar {
+
+    top: 8px;
+
+    padding: 10px 12px;
+  }
+
+  .as-ui-bottom-nav {
+
+    position: fixed;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(5, 1fr);
+
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    padding: 7px;
+
+    background: var(--ui-surface);
+
+    border: 1px solid var(--ui-border);
+
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+
+    z-index: 10000;
+  }
+
+  .as-ui-bottom-nav button {
+
+    min-height: 48px;
+
+    padding: 5px;
+
+    background: transparent;
+
+    color: var(--ui-muted);
+
+    box-shadow: none;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    font-size: 10px;
+  }
+
+  .as-ui-bottom-nav button.active {
+
+    background: var(--ui-primary-soft);
+
+    color: var(--ui-primary);
+  }
+}

@@ -1,0 +1,70 @@
+﻿AUTOMATION STUDIO
+FULL FRONTEND AUDIT
+Generated: 08/20/2026 06:13:16
+
+PROJECT
+-------
+C:\Users\aryan\my-automation-studio
+
+IMPORTANT FILES
+---------------
+
+App:
+C:\Users\aryan\my-automation-studio\src\App.css
+C:\Users\aryan\my-automation-studio\src\App.css.backup_20260820_040238
+C:\Users\aryan\my-automation-studio\src\App.css.backup_20260820_054921
+C:\Users\aryan\my-automation-studio\src\App.css.before-app-ui-20260820_055818
+C:\Users\aryan\my-automation-studio\src\App.css.before-dashboard-20260820_041450.backup
+C:\Users\aryan\my-automation-studio\src\App.css.before-modern-ui-20260820_055144
+C:\Users\aryan\my-automation-studio\src\App.css.checkpoint_20260820_040720
+C:\Users\aryan\my-automation-studio\src\App.css.integration-backup-20260820_041334
+C:\Users\aryan\my-automation-studio\src\App.jsx
+C:\Users\aryan\my-automation-studio\src\App.jsx.backup
+C:\Users\aryan\my-automation-studio\src\App.jsx.backup_20260820_040238
+C:\Users\aryan\my-automation-studio\src\App.jsx.backup_unified_20260820_040951
+C:\Users\aryan\my-automation-studio\src\App.jsx.before-ai-mount-20260820_041942.bak
+C:\Users\aryan\my-automation-studio\src\App.jsx.before-dashboard-20260820_041450.backup
+C:\Users\aryan\my-automation-studio\src\App.jsx.before-unified-20260820_041228.backup
+C:\Users\aryan\my-automation-studio\src\App.jsx.checkpoint_20260820_040720
+C:\Users\aryan\my-automation-studio\src\App.jsx.integration-backup-20260820_041334
+
+Workspace:
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.css
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspace.jsx
+C:\Users\aryan\my-automation-studio\src\components\UnifiedWorkspaceEntry.jsx
+
+UI:
+C:\Users\aryan\my-automation-studio\src\ui\app-shell.css
+C:\Users\aryan\my-automation-studio\src\ui\AppShell.jsx
+C:\Users\aryan\my-automation-studio\src\ui\theme-controller.js
+
+SERVICES
+--------
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js
+C:\Users\aryan\my-automation-studio\src\services\aiBridge.js.backup
+C:\Users\aryan\my-automation-studio\src\services\aiStatus.js
+
+FEATURES DETECTED
+-----------------
+Data Analyst
+AI / Ollama
+CSV / Excel
+Cleaning
+Statistics
+Charts
+Insights
+Reports
+Settings
+
+NEXT DEVELOPMENT TARGET
+-----------------------
+Connect the existing application functionality
+to the new AppShell without replacing existing
+Data Analyst / AI / Ollama logic.
+
+SAFETY RULE
+-----------
+Do NOT overwrite existing working components.
+Create backup before integration.
+Run production build after integration.
+Rollback automatically if build fails.
