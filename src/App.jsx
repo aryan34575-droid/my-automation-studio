@@ -1,141 +1,22 @@
-﻿import { useState } from "react";
-import {
-  ReactFlow,
-  Background,
-  Controls,
-  MiniMap
-} from "@xyflow/react";
-
-import "@xyflow/react/dist/style.css";
+import {useEffect,useState} from "react";
+import {Instagram,Upload,Link2,RefreshCw,CheckCircle2,AlertCircle,ExternalLink,Image,Film,Send,ShieldCheck} from "lucide-react";
 import "./App.css";
-
-export default function App() {
-  const [prompt, setPrompt] = useState(
-    "Explain this workflow in simple words."
-  );
-
-  const [result, setResult] = useState("");
-
-  const nodes = [
-    {
-      id: "start",
-      position: { x: 50, y: 180 },
-      data: { label: "▶ START" },
-      type: "input"
-    },
-    {
-      id: "ai",
-      position: { x: 350, y: 180 },
-      data: { label: "🤖 Llama 3.1 AI" }
-    },
-    {
-      id: "output",
-      position: { x: 680, y: 180 },
-      data: { label: "📤 OUTPUT" },
-      type: "output"
-    }
-  ];
-
-  const edges = [
-    {
-      id: "start-ai",
-      source: "start",
-      target: "ai",
-      animated: true
-    },
-    {
-      id: "ai-output",
-      source: "ai",
-      target: "output",
-      animated: true
-    }
-  ];
-
-  async function runFlow() {
-    setResult("Running Llama 3.1...");
-
-    try {
-      const response = await fetch("http://localhost:3001/api/ai", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt })
-      });
-
-      const data = await response.json();
-
-      if (data.error) {
-        setResult("Error: " + data.error);
-      } else {
-        setResult(data.response);
-      }
-    } catch (error) {
-      setResult(
-        "Backend connect nahi hua. Check karo ki server chal raha hai."
-      );
-    }
-  }
-
-  return (
-    <div className="app">
-
-      <header className="topbar">
-        <div>
-          <h1>⚡ My Automation Studio</h1>
-          <p>Local AI Workflow Builder</p>
-        </div>
-
-        <button onClick={runFlow}>
-          ▶ Run Flow
-        </button>
-      </header>
-
-      <main>
-
-        <section className="canvas">
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            fitView
-          >
-            <Background />
-            <Controls />
-            <MiniMap />
-          </ReactFlow>
-        </section>
-
-        <section className="panel">
-
-          <h2>🤖 AI Node</h2>
-
-          <label>
-            Instruction
-          </label>
-
-          <textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Tell Llama what to do..."
-          />
-
-          <button
-            className="run"
-            onClick={runFlow}
-          >
-            Run Automation
-          </button>
-
-          <h2>📤 Result</h2>
-
-          <div className="result">
-            {result || "Result yahan dikhega..."}
-          </div>
-
-        </section>
-
-      </main>
-
-    </div>
-  );
+const API=import.meta.env.VITE_API_URL||"";
+export default function App(){
+ const [status,setStatus]=useState({loading:true,connected:false}),[type,setType]=useState("REELS"),[url,setUrl]=useState(""),[caption,setCaption]=useState(""),[busy,setBusy]=useState(false),[notice,setNotice]=useState(""),[items,setItems]=useState([]),[mediaBusy,setMediaBusy]=useState(false);
+ async function refresh(){setStatus(s=>({...s,loading:true}));try{const r=await fetch(API+"/api/instagram/status");setStatus({loading:false,...await r.json()})}catch{setStatus({loading:false,connected:false,error:"Cannot reach backend"})}}
+ async function loadMedia(){setMediaBusy(true);try{const r=await fetch(API+"/api/instagram/media"),d=await r.json();if(!r.ok)throw Error(d.error);setItems(d.data||[])}catch(e){setNotice(e.message)}finally{setMediaBusy(false)}}
+ useEffect(()=>{refresh()},[]);
+ async function connect(){setNotice("");try{const r=await fetch(API+"/api/instagram/login"),d=await r.json();if(!r.ok)throw Error(d.error);location.href=d.url}catch(e){setNotice(e.message)}}
+ async function publish(e){e.preventDefault();setBusy(true);setNotice("");try{const r=await fetch(API+"/api/instagram/publish",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mediaType:type,mediaUrl:url,caption})}),d=await r.json();if(!r.ok)throw Error(d.error);setNotice("Published successfully to Instagram.");setUrl("");await loadMedia()}catch(e){setNotice(e.message)}finally{setBusy(false)}}
+ return <div className="shell"><header className="top"><a className="brand" href="#"><span className="brandmark"><Instagram/></span><span>SocialPilot<small>INSTAGRAM AUTOMATION</small></span></a><div className="topright"><i className={status.connected?"dot":"dot off"}/>{status.connected?"Account connected":"Setup required"}</div></header><main>
+ <section className="hero"><div><div className="eyebrow">CREATOR WORKSPACE</div><h1>Your Instagram.<br/><em>One control room.</em></h1><p>Publish Reels and feed posts, write captions and view recent content from one place.</p></div><div className="heroicon"><Instagram size={70}/></div></section>
+ <section className="account card"><div className="accountleft"><div className="avatar"><Instagram/></div><div><div className="muted">INSTAGRAM ACCOUNT</div><h2>{status.username?"@"+status.username:"Connect your professional account"}</h2><p>{status.connected?"Instagram Graph API connection is active.":"Connect an Instagram Business or Creator account."}</p></div></div><div className="accountactions"><span className={"pill "+(status.connected?"good":"warn")}>{status.loading?"Checking…":status.connected?"Connected":"Not connected"}</span><button className="btn secondary" onClick={refresh}><RefreshCw size={15}/> Refresh</button>{!status.connected&&<button className="btn primary" onClick={connect}><Link2 size={16}/> Connect Instagram</button>}</div></section>
+ {status.missing?.length>0&&<section className="setup card"><ShieldCheck/><div><h3>One-time Meta API setup required</h3><p>Configure a Meta Developer App, then add these private environment variables in your host. The separate vidIQ OAuth connection cannot be transferred into this standalone app.</p><div className="envlist">META_APP_ID · META_APP_SECRET · IG_ACCESS_TOKEN · IG_USER_ID · META_REDIRECT_URI</div><p className="small">Never put access tokens in GitHub or browser code. OAuth callback logs the account identity only; save token and user ID in your hosting secrets.</p></div></section>}
+ {status.error&&<div className="alert"><AlertCircle/>{status.error}</div>}
+ <div className="sectionhead"><div><div className="eyebrow">PUBLISH CONTENT</div><h2>Create a post</h2></div><span className="muted">Review before publishing</span></div>
+ <section className="publisher card"><form onSubmit={publish}><div className="typepick"><button type="button" className={type==="REELS"?"type active":"type"} onClick={()=>setType("REELS")}><Film/> Reel</button><button type="button" className={type==="IMAGE"?"type active":"type"} onClick={()=>setType("IMAGE")}><Image/> Feed photo</button></div><label>Public media URL <span>HTTPS link Instagram can access</span></label><div className="urlfield"><Link2/><input value={url} onChange={e=>setUrl(e.target.value)} placeholder={type==="REELS"?"https://example.com/video.mp4":"https://example.com/photo.jpg"} required/></div><p className="hint">Reels need a public MP4 URL. Photos need a public JPEG URL. The media must be directly fetchable by Instagram.</p><label>Caption</label><textarea value={caption} onChange={e=>setCaption(e.target.value)} maxLength={2200} placeholder="Write your caption and hashtags…" rows={6}/><div className="count">{caption.length}/2,200</div><button className="btn primary publish" disabled={busy||!status.connected||!url.trim()}><Send size={16}/>{busy?"Publishing…":"Publish "+(type==="REELS"?"Reel":"Feed post")}</button>{!status.connected&&<p className="hint center">Connect the Meta Instagram API first to enable publishing.</p>}</form></section>
+ {notice&&<div className="alert"><CheckCircle2/>{notice}</div>}
+ <div className="sectionhead recenthead"><div><div className="eyebrow">YOUR CONTENT</div><h2>Recent posts</h2></div><button className="btn secondary" onClick={loadMedia} disabled={!status.connected||mediaBusy}><RefreshCw size={15}/>{mediaBusy?"Loading…":"Load posts"}</button></div>
+ <section className="recent card">{items.length?items.map(x=><article className="post" key={x.id}><div className="posticon">{x.media_type==="VIDEO"||x.media_type==="REELS"?<Film/>:<Image/>}</div><div className="posttext"><b>{x.media_type||"Post"}</b><p>{x.caption||"No caption"}</p><small>{x.timestamp?new Date(x.timestamp).toLocaleString():""}</small></div>{x.permalink&&<a href={x.permalink} target="_blank" rel="noreferrer"><ExternalLink/></a>}</article>):<div className="empty"><Instagram/><p>Your latest Instagram posts will appear here.</p></div>}</section><footer>For @aryan_.insights · Official Instagram API · No automated likes, follows or spam</footer></main></div>
 }
