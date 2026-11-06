@@ -22,7 +22,6 @@
     "mammoth": "^1.12.1",
     "multer": "^2.2.0",
     "pdf-parse": "^2.4.5",
-    "pptxgenjs": "file:../AppData/Local/Temp/pptx-patch-20260820_080138/package",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
